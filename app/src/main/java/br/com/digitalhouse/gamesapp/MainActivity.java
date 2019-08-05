@@ -2,17 +2,17 @@ package br.com.digitalhouse.gamesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.com.digitalhouse.gamesapp.adapter.GamesAdapter;
+import br.com.digitalhouse.gamesapp.adapter.listener.GameListListener;
 import br.com.digitalhouse.gamesapp.model.Game;
 import br.com.digitalhouse.gamesapp.viewmodel.GameViewModel;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GameListListener {
 
     private RecyclerView gameRecyclerView;
     private GamesAdapter gamesAdapter;
@@ -35,5 +35,19 @@ public class MainActivity extends AppCompatActivity {
 
         gameViewModel.getGameLiveData()
                 .observe(this, gameList -> gamesAdapter.atualizarGames(gameList));
+    }
+
+    @Override
+    public void onGameClick(Game game) {
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        intent.setType("text/plain");
+
+        intent.putExtra(Intent.EXTRA_SUBJECT,game.getTitulo());
+
+        intent.putExtra(Intent.EXTRA_TEXT,game.getTitulo()+": "+game.getDescricao());
+
+        
     }
 }
