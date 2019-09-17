@@ -11,6 +11,9 @@ import br.com.digitalhouse.gamesapp.viewmodel.GameViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements GameListListener {
 
@@ -40,14 +43,18 @@ public class MainActivity extends AppCompatActivity implements GameListListener 
     @Override
     public void onGameClick(Game game) {
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
+        Toast.makeText(getApplicationContext(), "This is my Toast message!",
+                Toast.LENGTH_LONG).show();
 
-        intent.setType("text/plain");
 
-        intent.putExtra(Intent.EXTRA_SUBJECT,game.getTitulo());
+      //  Intent intent = new Intent(Intent.ACTION_SEND);
+        //
+      //  intent.setType("text/plain");
+//
+      //  intent.putExtra(Intent.EXTRA_SUBJECT,game.getTitulo());
+//
+      //  intent.putExtra(Intent.EXTRA_TEXT,game.getTitulo()+": "+game.getDescricao());
 
-        intent.putExtra(Intent.EXTRA_TEXT,game.getTitulo()+": "+game.getDescricao());
 
-        
     }
 }

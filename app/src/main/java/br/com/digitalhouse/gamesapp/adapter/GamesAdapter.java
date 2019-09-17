@@ -27,6 +27,10 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> 
         this.gameListListener = gameListListener;
     }
 
+    public GamesAdapter() {
+
+    }
+
     public void atualizarGames(List<Game> gameList){
         this.gameList = gameList;
         notifyDataSetChanged();
@@ -44,7 +48,7 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> 
         Game game = gameList.get(position);
         holder.bind(game);
 
-        holder.itemView.setOnClickListener(view -> gameListListener.onGameClick(game));
+       // holder.itemView.setOnClickListener(view -> gameListListener.onGameClick(game));
 
     }
 
